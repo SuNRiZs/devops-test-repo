@@ -24,7 +24,9 @@ pipeline {
                     // Строим Docker образ и тегируем его номером сборки
                     def myImage = docker.build("sunraize/test-php:${BUILD_NUMBER}")
             
-                    // Запускаем контейнер для тестирования образа
+                    // Запускаем контейнер для тестирования образа и проверяем что такого контейнера не запущено, елси есть останавливаем и удаляем
+                    sh "docker stop webtest || true"
+                    sh "docker rm webtest || true"
                     sh "docker run -d -p \"8080:80\" --name webtest sunraize/test-php:${BUILD_NUMBER}"
             
                     // Проверяем работоспособность веб-сервера в контейнере
