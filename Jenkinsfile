@@ -67,11 +67,11 @@ pipeline {
                 // Удаляем старые образы Docker на сервере и сборщике
                 script {
                      sh "docker rmi sunraize/test-php:\${BUILD_NUMBER}"
-                     sh """
-                       ssh -i \${SSH_KEY_PATH} -p 40022 devops@{SERVER} '
+                     sh '''
+                       ssh -i \${SSH_KEY_PATH} -p 40022 devops@\${SERVER} '
                            docker images | grep "sunraize/test-php" | sort -r | tail -n +4 | awk "{print \\\\\\$1\\\":\\\"\\\\\\$2}" | xargs -r docker rmi
                         '
-                     """
+                     '''
                 }
             }
         }
