@@ -60,7 +60,7 @@ pipeline {
                     scp -i \${SSH_KEY_PATH} -P 40022 docker-compose.yml devops@\${SERVER}:/home/devops/
                     scp -i \${SSH_KEY_PATH} -P 40022 -r ./database/ devops@\${SERVER}:/home/devops/
                     ssh -i \${SSH_KEY_PATH} -p 40022 devops@\${SERVER} '
-                    sed -i "s/image: sunraize\\/test-php:.*/image: sunraize\\/test-php:${BUILD_NUMBER}/" /home/devops/docker-compose.yml && mkdir -p /home/devops/data && docker-compose -f /home/devops/docker-compose.yml pull && docker-compose -f /home/devops/docker-compose.yml up -d --no-deps --build web && docker exec mysql_container mysql -u root -p root test_zadanie < /home/devops/database/create-blog-and-comments-tables.sql
+                    sed -i "s/image: sunraize\\/test-php:.*/image: sunraize\\/test-php:${BUILD_NUMBER}/" /home/devops/docker-compose.yml && mkdir -p /home/devops/data && docker-compose -f /home/devops/docker-compose.yml pull && docker-compose -f /home/devops/docker-compose.yml up -d --no-deps --build web
                     '
                 """
             }
