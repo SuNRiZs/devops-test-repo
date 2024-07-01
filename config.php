@@ -1,5 +1,5 @@
 <?php
-    $db_host = 'localhost';
+    $db_host = 'db';
     $db_port = '3306';
     $db_name = 'test_zadanie';
     $db_user = 'root';
