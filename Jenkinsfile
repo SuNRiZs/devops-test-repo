@@ -15,7 +15,7 @@ pipeline {
         stage('Clone repository') {
             steps {
                 // Клонируем репозиторий с GitHub для начала работы
-                git(credentialsId: 'github-credentials-id', url: 'https://github.com/SuNRiZs/php-test.git', branch: 'main')
+                git(credentialsId: 'github-credentials-id', url: 'https://github.com/SuNRiZs/devops-test-repo.git', branch: 'main')
             }
         }
         stage('Build, Test and Push Image') {
