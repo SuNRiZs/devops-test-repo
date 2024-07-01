@@ -56,7 +56,7 @@ pipeline {
                 // Разворачиваем образ на сервере с помощью SCP и SSH
                 sh """
                     scp -i \${SSH_KEY_PATH} -P 40022 docker-compose.yml devops@\${SERVER}:/home/devops/
-                    scp -i \${SSH_KEY_PATH} -P 40022 -r ./database/ devops@\${SERVER}:/home/devops/database/
+                    scp -i \${SSH_KEY_PATH} -P 40022 -r ./database/ devops@\${SERVER}:/home/devops/
                     ssh -i \${SSH_KEY_PATH} -p 40022 devops@\${SERVER} '
                     sed -i "s/image: sunraize\\/test-php:.*/image: sunraize\\/test-php:${BUILD_NUMBER}/" /home/devops/docker-compose.yml && docker-compose -f /home/devops/docker-compose.yml pull && docker-compose -f /home/devops/docker-compose.yml up -d --no-deps --build web
                     '
