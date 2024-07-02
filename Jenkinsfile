@@ -67,14 +67,13 @@ pipeline {
         }
         stage('Clean up Docker images') {
             steps {
-                // Удаляем старые образы Docker на сервере и сборщике
                 script {
-                     sh "docker rmi sunraize/test-php:\${BUILD_NUMBER}"
-                     sh '''
-                       ssh -i \${SSH_KEY_PATH} -p 40022 devops@\${SERVER} '
-                           sudo docker images | grep "sunraize/test-php" | sort -r | tail -n +4 | awk '\''{print \\$1":"\\$2}'\'' | xargs -r sudo docker rmi
+                    sh "docker rmi sunraize/test-php:${BUILD_NUMBER}"
+                    sh """
+                        ssh -i ${SSH_KEY_PATH} -p 40022 devops@194.190.221.21 '
+                            docker images | grep "sunraize/test-php" | sort -r | tail -n +4 | awk "{print \\\$3}" | xargs -r docker rmi
                         '
-                     '''
+                    """
                 }
             }
         }
