@@ -1,4 +1,4 @@
-<?php include 'config.php'; ?>
+<?php include 'config.php'; asdf ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
