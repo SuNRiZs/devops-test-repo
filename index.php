@@ -1,16 +1,16 @@
-<?php include 'config.php'; ?>
+<?php include 'config.php'; asdf ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Поиск записей по комментарию</title>
+    <title>Поиск записей по комментарию. TEST</title>
     <!-- Подключение Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <style>
         /* Добавление стиля для изменения фона */
         body {
-            background-color: #808080; /* Серый цвет фона */
+            background-color: #f0f0f0; /* Серый цвет фона (был 808080) */
         }
     </style>
 </head>
